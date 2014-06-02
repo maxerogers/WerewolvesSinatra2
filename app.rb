@@ -1,0 +1,5 @@
+require 'rubygems'
+require 'bundler'
+require 'sinatra'
+require './model.rb'
+require './controller.rb'
