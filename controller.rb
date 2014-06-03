@@ -3,11 +3,21 @@ get '/' do
   "Hello World"
 end
 
-put '/new_user' do 
-
+get '/login_user' do
+	logger.info params.inspect
+	u = User.last(:username => params[:email])
+	return jsonp ["No Email Found"] if u.nil?
+	return jsonp ["Bad Password"] if u.password != params[:password]
+	jsonp u.to_json
 end
 
-get '/test_json' do
-	jsonp User.all
+get '/new_user' do
+	logger.info params.inspect
+	u = User.last(username: params[:email])
+	if u.nil?
+		u = User.create(username: params[:email], password: params[:password])
+	else
+		return jsonp ["Email already registred"]
+	end
+	jsonp u.to_json
 end
-29942
