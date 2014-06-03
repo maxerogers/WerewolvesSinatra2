@@ -21,3 +21,4 @@ get '/new_user' do
 	end
 	jsonp u.to_json
 end
+
