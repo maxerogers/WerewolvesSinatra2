@@ -8,6 +8,7 @@ class User
   property :username, String, length: 128
   property :name, String
   property :password, BCryptHash
+<<<<<<< HEAD
 
   belongs_to :game
 end
@@ -19,6 +20,9 @@ class Game
 	property :winner, String
 
 	has n, :users
+=======
+  property :online, Boolean
+>>>>>>> 4e187ef136fc30f86696e6a2f4b75bc21202014f
 end
 
 DataMapper.finalize
