@@ -8,6 +8,7 @@ class User
   property :username, String, length: 128
   property :name, String
   property :password, BCryptHash
+  property :online, Boolean
 end
 
 DataMapper.finalize
