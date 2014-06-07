@@ -3,6 +3,11 @@ get '/' do
   "Hello World"
 end
 
+post '/' do
+  logger.info params.inspect
+  "HOWDY"
+end
+
 get '/login_user' do
 	logger.info params.inspect
 	u = User.last(:username => params[:email])
@@ -22,3 +27,24 @@ get '/new_user' do
 	jsonp u.to_json
 end
 
+get "/games" do
+	jsonp Game.all.to_json
+end
+
+get "/game" do
+	logger.info params.inspect
+	logger.info "ADSF"
+	g = Game.last(name: params[:params])
+	jsonp g.to_json
+end
+
+post "/game" do
+	logger.info params.inspect
+	jsonp ["HI"]
+end
+
+delete "/game" do
+	logger.info params.inspect
+	Game.last(name: params[:name]).destroy
+	jsonp ["Successful Delete"]
+end

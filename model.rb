@@ -8,6 +8,17 @@ class User
   property :username, String, length: 128
   property :name, String
   property :password, BCryptHash
+
+  belongs_to :game
+end
+
+class Game
+	include DataMapper::Resource
+	property :id, Serial
+	property :name, String
+	property :winner, String
+
+	has n, :users
 end
 
 DataMapper.finalize
